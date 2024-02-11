@@ -12,8 +12,6 @@ const CustomList = ({ id, chatName, enterChat }) => {
         />
         <ListItem.Content>
           <ListItem.Title>{chatName}</ListItem.Title>
-          {/* <ListItem.Subtitle numberOfLines={1} ellipsizeMode="tail">
-          </ListItem.Subtitle> */}
         </ListItem.Content>
       </ListItem>
     </TouchableOpacity>
