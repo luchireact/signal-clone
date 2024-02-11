@@ -4,10 +4,10 @@
     "slug": "signal-clone",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/signal-app-icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/images/signal-app-icon.png",
+      "image": "./assets/signal-app-icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -15,7 +15,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.yourcompany.signalclone"
     },
     "android": {
       "adaptiveIcon": {
