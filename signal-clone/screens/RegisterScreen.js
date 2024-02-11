@@ -29,11 +29,12 @@ const RegisterScreen = ({ navigation }) => {
   // ...
 
   const handleRegistration = () => {
-
-    createUserWithEmailAndPassword(auth, email, password)
+    const trimmedEmail = email.trim().toLowerCase();
+  
+    createUserWithEmailAndPassword(auth, trimmedEmail, password)
       .then((userCredential) => {
         const user = userCredential.user;
-
+  
         // Update user profile
         updateProfile(user, {
           displayName: fullName,
@@ -53,6 +54,7 @@ const RegisterScreen = ({ navigation }) => {
         alert(error.message);
       });
   };
+  
 
   // ...
 

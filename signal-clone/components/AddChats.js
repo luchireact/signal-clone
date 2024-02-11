@@ -18,8 +18,15 @@ const AddChats = ({ navigation }) => {
 
   const createChat = async () => {
     try {
+      let truncatedChatName = input;
+
+      // Check if the chatName is longer than 17 characters (including whitespaces)
+      if (truncatedChatName.length > 17) {
+        truncatedChatName = truncatedChatName.substring(0, 17) + '...';
+      }
+
       const docRef = await addDoc(collection(db, 'chats'), {
-        chatName: input,
+        chatName: truncatedChatName,
       });
 
       console.log('Document written with ID: ', docRef.id);

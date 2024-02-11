@@ -48,7 +48,7 @@ const ChatScreen = ({ navigation, route }) => {
           <TouchableOpacity>
             <Ionicons name="videocam" size={24} color="white" />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('AddChats')}>
+          <TouchableOpacity >
             <Ionicons name="call" size={24} color="white" />
           </TouchableOpacity>
         </View>
@@ -97,22 +97,24 @@ const ChatScreen = ({ navigation, route }) => {
               data.email === auth.currentUser.email ? (
                 <View key={id} style={styles.receiverText}>
                   <Avatar
+                    style={styles.avatarreceiver} // Use the correct style name here
                     rounded
                     source={{
                       uri: data.photoURL || require('../assets/signal-app-icon.png'),
                     }}
                   />
-                  <Text style={styles.messageText}>{data.message}</Text>
+                  <Text style={styles.receiveText}>{data.message}</Text>
                 </View>
               ) : (
                 <View key={id} style={styles.senderText}>
                   <Avatar
+                    style={styles.avatarsender} // Use the correct style name here
                     rounded
                     source={{
                       uri: data.photoURL || require('../assets/signal-app-icon.png'),
                     }}
                   />
-                  <Text style={styles.messageText}>{data.message}</Text>
+                  <Text style={styles.sendText}>{data.message}</Text>
                 </View>
               )
             )}
@@ -139,6 +141,16 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
   },
+  avatarreceiver:{
+    position: "absolute",
+    bottom: -15,
+    rightt: -5,
+  },
+  avatarsender:{
+    position: "absolute",
+    bottom: -15,
+    left: -5,
+  },
   container: {
     flex: 1,
   },
@@ -147,19 +159,34 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   receiverText: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 10,
+    marginBottom: 20,
+    marginRight: 15,
+    maxWidth: "80%",
+    position: "relative",
+    alignSelf: "flex-end",
+    backgroundColor: '#0077CC',
+    padding: 15,
+    borderRadius: 10,
   },
   senderText: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 10,
-    alignSelf: 'flex-end',
+    borderRadius: 10,
+    marginBottom: 20,
+    marginLeft: 15,
+    maxWidth: "80%",
+    position: "relative",
+    alignSelf: "flex-start",
+    backgroundColor: '#0077CC',
+    padding: 15,
   },
-  messageText: {
+  receiveText: {
+    color: "white",
     marginLeft: 10,
-    fontSize: 16,
+    fontWeight: "500"
+  },
+  sendText: {
+    color: "white",
+    marginRight: 10, // Corrected the typo in marginRight
+    fontWeight: "500"
   },
   footer: {
     flexDirection: 'row',
@@ -168,7 +195,6 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderTopWidth: 1,
     borderTopColor: '#ccc',
-    
   },
   avatarContainer: {
     flexDirection: 'row',
@@ -193,7 +219,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#ECECEC',
     width: '80%',
     height: 40,
-    
   },
 });
 
